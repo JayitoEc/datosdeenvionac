@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Etiqueta de Envío</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 14.8cm; /* Tamaño A5 en centímetros */
+            height: 21cm;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <strong>Para un envío seguro y rápido por favor llenar todos los datos solicitados.</strong>
+        </div>
+        <form id="form">
+            <label><strong>NOMBRES Y APELLIDOS COMPLETOS:</strong></label>
+            <input type="text" id="nombres" name="nombres" required><br>
+            
+            <label><strong>CÉDULA O RUC:</strong></label>
+            <input type="text" id="cedula" name="cedula" required><br>
+            
+            <label><strong>TELÉFONO CONTACTO:</strong></label>
+            <input type="tel" id="telefono_contacto" name="telefono_contacto" required><br>
+            
+            <label><strong>CALLE PRINCIPAL:</strong></label>
+            <input type="text" id="calle_principal" name="calle_principal" required><br>
+            
+            <label><strong>No. DE CASA:</strong></label>
+            <input type="text" id="no_casa" name="no_casa" required><br>
+            
+            <label><strong>CALLE TRANSVERSAL:</strong></label>
+            <input type="text" id="calle_transversal" name="calle_transversal" required><br>
+            
+            <label><strong>SECTOR:</strong></label>
+            <input type="text" id="sector" name="sector" required><br>
+            
+            <label><strong>REFERENCIA:</strong></label>
+            <input type="text" id="referencia" name="referencia" required><br>
+            
+            <label><strong>CONTACTO:</strong></label>
+            <input type="text" id="contacto" name="contacto" required><br>
+            
+            <label><strong>CIUDAD:</strong></label>
+            <input type="text" id="ciudad" name="ciudad" required><br>
+            
+            <label><strong>PROVINCIA:</strong></label>
+            <input type="text" id="provincia" name="provincia" required><br>
+            
+            <label><strong>VALOR A COBRAR:</strong></label>
+            <input type="text" id="valor_cobrar" name="valor_cobrar" value="uso interno" readonly><br>
+            
+            <button type="button" class="button" onclick="sendWhatsApp()">Generar Guía Envío</button>
+        </form>
+    </div>
+    
+    <script>
+        function sendWhatsApp() {
+            var nombres = document.getElementById('nombres').value;
+            var cedula = document.getElementById('cedula').value;
+            var telefono = document.getElementById('telefono_contacto').value;
+            var calle_principal = document.getElementById('calle_principal').value;
+            var no_casa = document.getElementById('no_casa').value;
+            var calle_transversal = document.getElementById('calle_transversal').value;
+            var sector = document.getElementById('sector').value;
+            var referencia = document.getElementById('referencia').value;
+            var contacto = document.getElementById('contacto').value;
+            var ciudad = document.getElementById('ciudad').value;
+            var provincia = document.getElementById('provincia').value;
+            
+            var message = 'DESTINATARIO%0A';
+            message += 'NOMBRES%20Y%20APELLIDOS%20COMPLETOS: ' + nombres + '%0A';
+            message += 'C%C3%89DULA%20O%20RUC: ' + cedula + '%0A';
+            message += 'TEL%C3%89FONO%20CONTACTO: ' + telefono + '%0A';
+            message += 'CALLE%20PRINCIPAL: ' + calle_principal + '%0A';
+            message += 'No.%20DE%20CASA: ' + no_casa + '%0A';
+            message += 'CALLE%20TRANSVERSAL: ' + calle_transversal + '%0A';
+            message += 'SECTOR: ' + sector + '%0A';
+            message += 'REFERENCIA: ' + referencia + '%0A';
+            message += 'CONTACTO: ' + contacto + '%0A';
+            message += 'CIUDAD: ' + ciudad + '%0A';
+            message += 'PROVINCIA: ' + provincia + '%0A';
+            message += 'VALOR%20A%20COBRAR: uso%20interno';
+            
+            window.open('https://wa.me/593980844531?text=' + message, '_blank');
+        }
+    </script>
+</body>
+</html>
